@@ -1,5 +1,7 @@
 <template>
   <div class="content learning">
+    <Modal v-if="showModal" @toggle="this.toggle" />
+
     <div class="learning__left">
       <div class="learning__header">
         <h1 class="heading-primary">Learning</h1>
@@ -8,7 +10,7 @@
       </div>
 
       <div class="learning__courses">
-        <div class="btn-add">
+        <div class="btn-add" @click="toggle">
           <h2 class="heading-secondary">Courses</h2>
           <span class="material-icons btn-add__icon">
             add_circle
@@ -172,10 +174,12 @@
 
 <script>
 import CourseList from "@/components/courses/CourseList";
+import Modal from "@/components/utils/Modal";
 
 export default {
   components: {
-    CourseList
+    CourseList,
+    Modal
   },
   async fetch({ $axios, store }) {
     const data = await $axios.$get("https://type.fit/api/quotes");
@@ -184,6 +188,16 @@ export default {
       await store.dispatch("quotes/storeQuotes", data);
     } catch (err) {
       console.error(err);
+    }
+  },
+  data() {
+    return {
+      showModal: false
+    };
+  },
+  methods: {
+    toggle() {
+      this.showModal = !this.showModal;
     }
   },
   computed: {
