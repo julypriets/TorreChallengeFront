@@ -30,17 +30,13 @@
 export default {
   name: "CourseCard",
   props: {
-    id: {
-      type: String,
-      required: true
-    },
     name: {
       type: String,
       required: true
     },
     thumbnail: {
       type: String,
-      required: true
+      required: false
     },
     startDate: {
       type: String,

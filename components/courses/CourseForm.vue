@@ -193,7 +193,6 @@ export default {
   },
   methods: {
     async save() {
-      console.log("SAVE");
       try {
         const body = this.current
           ? {
@@ -218,9 +217,8 @@ export default {
               certificateExpirationDate: this.certificateExpirationDate,
               certificateURL: this.certificateURL
             };
-        const data = await this.$axios.$post("courses/createCourse", body);
-        console.log("This is the data! ", data);
-        //  this.$store.dispatch('courses/addCourse', data)
+
+        this.$emit("createCourse", body);
       } catch (err) {
         console.error(err);
       }

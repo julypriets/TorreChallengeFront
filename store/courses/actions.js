@@ -1,11 +1,11 @@
 export default {
   addCourse({ commit }, data) {
-    commit("addCurrentCourse", data);
+    commit("addCourse", data);
   },
   addCourses({ commit }, data) {
-    commit("addCurrentCourses", data);
+    commit("addCourses", data);
   },
   setCourses({ commit }, data) {
-    commit("setCurrentCourses", data);
+    commit("setCourses", data);
   }
 };

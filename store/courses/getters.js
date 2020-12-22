@@ -1,5 +1,5 @@
 export default {
-  allCourses(state) {
+  courses(state) {
     return state.courses;
   },
   currentCourses(state) {
