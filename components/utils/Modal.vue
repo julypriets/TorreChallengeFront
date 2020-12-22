@@ -1,25 +1,23 @@
 <template>
-  <transition name="modal">
-    <div class="modal">
-      <div class="modal__mask"></div>
-      <div class="modal__wrapper">
-        <div class="modal__container">
-          <div class="modal__header">
-            <slot name="header"></slot>
-            <div class="modal__x" @click="$emit('toggle')">
-              &times;
-            </div>
+  <div class="modal">
+    <div class="modal__mask"></div>
+    <div class="modal__wrapper">
+      <div class="modal__container">
+        <div class="modal__header">
+          <slot name="header"></slot>
+          <div class="modal__x" @click="$emit('toggle')">
+            &times;
           </div>
-          <div class="modal__body">
-            <slot name="body"></slot>
-          </div>
-          <div class="modal__footer">
-            <slot name="footer"></slot>
-          </div>
+        </div>
+        <div class="modal__body">
+          <slot name="body"></slot>
+        </div>
+        <div class="modal__footer">
+          <slot name="footer"></slot>
         </div>
       </div>
     </div>
-  </transition>
+  </div>
 </template>
 
 <script>

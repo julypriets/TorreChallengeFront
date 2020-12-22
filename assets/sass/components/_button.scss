@@ -1,6 +1,7 @@
 .btn-add {
-  display: flex;
+  display: inline-flex;
   align-items: center;
+  cursor: pointer;
 
   &__icon {
     color: $color-primary;
@@ -21,5 +22,15 @@
 
   &:hover {
     background-color: rgba($color-dark-gray, 0.8);
+  }
+
+  &--disabled {
+    @extend .btn-standard;
+    color: rgba($color-primary, 0.5);
+    cursor: not-allowed;
+
+    &:hover {
+      background-color: $color-dark;
+    }
   }
 }

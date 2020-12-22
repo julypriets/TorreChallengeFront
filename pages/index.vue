@@ -1,4 +1,4 @@
-<template>
+<template v-cloak>
   <div class="content learning">
     <CourseForm v-if="showModal" @toggle="this.toggle" />
 

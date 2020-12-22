@@ -1,8 +1,11 @@
 export default {
+  allCourses(state) {
+    return state.courses;
+  },
   currentCourses(state) {
-    return state.currentCourses;
+    return state.courses.filter(course => course.current === true);
   },
   completedCourses(state) {
-    return state.completedCourses;
+    return state.courses.filter(course => course.current === false);
   }
 };

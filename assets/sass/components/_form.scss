@@ -14,13 +14,15 @@
     margin: 0.5rem 0 1rem 0;
 
     &::placeholder {
-      color: $color-gray;
+      color: rgba($color-light, 0.8);
+      border: 2px solid red;
     }
   }
 
   &__wrap {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 
     & input {
       max-width: 24rem;
@@ -80,6 +82,28 @@
 
     &-label {
       margin-left: 0.6rem;
+    }
+  }
+
+  &__warning {
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    margin-top: 0.5rem;
+
+    &-icon {
+      height: 1.5rem;
+      width: 1.5rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: $color-warning;
+      margin-right: 0.5rem;
+    }
+
+    &-text {
+      color: $color-light;
     }
   }
 }

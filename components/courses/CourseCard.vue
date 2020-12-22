@@ -4,7 +4,9 @@
       class="course-card__img"
       :style="{ backgroundImage: 'url(' + thumbnail + ')' }"
     ></div>
-    <div class="course-card__options">...</div>
+    <div class="course-card__options" @click="showPopover = !showPopover">
+      ...
+    </div>
     <div class="course-card__content">
       <p class="course-card__title">
         {{ name }}
@@ -15,10 +17,12 @@
         <p v-if="endDate">&nbsp; to {{ endDate }}</p>
       </div>
     </div>
-    <div class="course-card__popover">
-      <div class="course-card__popover-item">Edit</div>
-      <div class="course-card__popover-item">Delete</div>
-    </div>
+    <transition name="fade">
+      <div class="course-card__popover" v-if="showPopover">
+        <div class="course-card__popover-item">Edit</div>
+        <div class="course-card__popover-item">Delete</div>
+      </div>
+    </transition>
   </div>
 </template>
 
@@ -50,6 +54,11 @@ export default {
       type: String,
       required: true
     }
+  },
+  data() {
+    return {
+      showPopover: false
+    };
   }
 };
 </script>

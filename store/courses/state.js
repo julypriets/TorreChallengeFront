@@ -1,5 +1,5 @@
 export default () => ({
-  currentCourses: [
+  courses: [
     {
       id: "1234567890",
       name: "Trees and Systems",
@@ -21,9 +21,7 @@ export default () => ({
       issuedBy: "Coursera",
       skills: ["Responsibility", "Project Management"],
       sectors: ["Economy", "Health", "Systems"]
-    }
-  ],
-  completedCourses: [
+    },
     {
       id: "16234567890",
       name: "Finished and Systems",

@@ -40,31 +40,42 @@
                 >
               </div>
             </div>
-            <v-date-picker
-              v-model="endDate"
-              is-dark
-              color="green"
-              v-if="!current"
-            >
-              <template v-slot="{ inputValue, togglePopover }">
-                <div
-                  class="form__date"
-                  @click="togglePopover({ placement: 'auto-start' })"
-                >
-                  <button class="form__date-button">
-                    <span class="material-icons form__date-icon">
-                      calendar_today
-                    </span>
-                  </button>
-                  <input
-                    :value="inputValue"
-                    placeholder="* End date"
-                    class="form__date-input"
-                    readonly
-                  />
+            <div>
+              <v-date-picker
+                v-model="endDate"
+                is-dark
+                color="green"
+                v-if="!current"
+              >
+                <template v-slot="{ inputValue, togglePopover }">
+                  <div
+                    class="form__date"
+                    @click="togglePopover({ placement: 'auto-start' })"
+                  >
+                    <button class="form__date-button">
+                      <span class="material-icons form__date-icon">
+                        calendar_today
+                      </span>
+                    </button>
+                    <input
+                      :value="inputValue"
+                      placeholder="* End date"
+                      class="form__date-input"
+                      readonly
+                    />
+                  </div>
+                </template>
+              </v-date-picker>
+              <div
+                class="form__warning"
+                v-if="startDate > endDate && endDate !== '' && !current"
+              >
+                <div class="form__warning-icon">!</div>
+                <div class="form__warning-text">
+                  End date cannot be earlier than Start date
                 </div>
-              </template>
-            </v-date-picker>
+              </div>
+            </div>
           </div>
 
           <input
@@ -93,6 +104,7 @@
               type="number"
               class="form__input"
               placeholder="* Total hours"
+              min="0"
               v-model.number="totalHours"
             />
 
@@ -143,7 +155,13 @@
       </div>
 
       <div slot="footer">
-        <button class="btn-standard">SAVE</button>
+        <button
+          :class="activateSave ? 'btn-standard' : 'btn-standard--disabled'"
+          :disabled="!activateSave"
+          @click="save"
+        >
+          SAVE
+        </button>
       </div>
     </Modal>
   </div>
@@ -158,9 +176,9 @@ export default {
   data() {
     return {
       name: "",
-      startDate: new Date(),
+      startDate: "",
       current: false,
-      endDate: new Date(),
+      endDate: "",
       issuedBy: "",
       skillString: "",
       //   skills: [],
@@ -168,17 +186,80 @@ export default {
       //   sectors: [],
       totalHours: 0,
       certificateID: "",
-      certificateExpirationDate: new Date(),
+      certificateExpirationDate: "",
       certificateURL: "",
       certificateImage: {}
     };
+  },
+  methods: {
+    async save() {
+      console.log("SAVE");
+      try {
+        const body = this.current
+          ? {
+              name: this.name,
+              startDate: this.startDate,
+              current: this.current,
+              issuedBy: this.issuedBy,
+              skills: this.skills,
+              sectors: this.sectors,
+              totalHours: this.totalHours
+            }
+          : {
+              name: this.name,
+              startDate: this.startDate,
+              current: this.current,
+              endDate: this.endDate,
+              issuedBy: this.issuedBy,
+              skills: this.skills,
+              sectors: this.sectors,
+              totalHours: this.totalHours,
+              certificateID: this.certificateID,
+              certificateExpirationDate: this.certificateExpirationDate,
+              certificateURL: this.certificateURL
+            };
+        const data = await this.$axios.$post("courses/createCourse", body);
+        console.log("This is the data! ", data);
+        //  this.$store.dispatch('courses/addCourse', data)
+      } catch (err) {
+        console.error(err);
+      }
+    }
   },
   computed: {
     skills() {
       return this.skillString.split(",");
     },
     sectors() {
-      return this.sectorString.split(",");
+      return this.sectorString.split(",").map(string => string.trim());
+    },
+    activateSave() {
+      if (this.current) {
+        if (
+          this.name !== "" &&
+          this.issuedBy !== "" &&
+          this.skills.length > 0 &&
+          this.sectors.length > 0 &&
+          this.totalHours > 0
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+      } else {
+        if (
+          this.name !== "" &&
+          this.issuedBy !== "" &&
+          this.skills.length > 0 &&
+          this.sectors.length > 0 &&
+          this.totalHours > 0 &&
+          this.endDate >= this.startDate
+        ) {
+          return true;
+        } else {
+          return false;
+        }
+      }
     }
   }
 };

@@ -32,7 +32,10 @@ export default {
   css: ["~assets/sass/main.scss"],
 
   // Plugins to run before rendering page (https://go.nuxtjs.dev/config-plugins)
-  plugins: [{ src: "@/plugins/v-date-picker", ssr: false }],
+  plugins: [
+    { src: "@/plugins/v-date-picker", ssr: false },
+    { src: "@/plugins/axios" }
+  ],
 
   // Auto import components (https://go.nuxtjs.dev/config-components)
   components: true,
@@ -42,10 +45,6 @@ export default {
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: ["@nuxtjs/axios"],
-
-  axios: {
-    //  baseURL: 'backendURL'
-  },
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {}
