@@ -49,26 +49,6 @@ export default {
     issuedBy: {
       type: String,
       required: true
-    },
-    skills: {
-      type: Array,
-      required: true
-    },
-    sectors: {
-      type: Array,
-      required: true
-    },
-    certificateURL: {
-      type: String,
-      required: false
-    },
-    certificateID: {
-      type: String,
-      required: false
-    },
-    certificateExpirationDate: {
-      type: String,
-      required: false
     }
   }
 };

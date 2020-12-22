@@ -10,7 +10,7 @@
   z-index: 10;
 
   &__mask {
-    background: rgba(#1c1e21, 0.85);
+    background: rgba(black, 0.5);
     position: absolute;
     top: 0;
     left: 0;
@@ -20,13 +20,15 @@
 
   &__wrapper {
     position: relative;
-    width: 65vmin;
+    width: 50%;
     min-height: 35vmin;
-    background: #fff;
-    color: #333;
+    background: $color-dark;
+    color: inherit;
     display: flex;
     border-radius: 0.2em;
-    box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.2), 0 1em 2em -1em;
+    box-shadow: 0 7px 9px -4px rgba(0, 0, 0, 0.2),
+      0 14px 21px 2px rgba(0, 0, 0, 0.14), 0 5px 26px 4px rgba(0, 0, 0, 0.12);
+    overflow-x: hidden;
   }
 
   &__container {
@@ -37,23 +39,27 @@
 
   &__header {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     padding: 1em;
   }
 
   &__body {
     flex: 1;
-    padding: 1em;
-    overflow: auto;
+    width: 100%;
   }
 
   &__footer {
-    padding: 1em;
+    padding: 2rem 3rem 1rem 3rem;
     text-align: right;
   }
 
   &__x {
     cursor: pointer;
+    color: inherit;
+    position: absolute;
+    right: 2rem;
+    top: 1rem;
+    font-size: 2rem;
   }
 }
 

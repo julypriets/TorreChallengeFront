@@ -1,6 +1,6 @@
 <template>
   <div class="content learning">
-    <Modal v-if="showModal" @toggle="this.toggle" />
+    <CourseForm v-if="showModal" @toggle="this.toggle" />
 
     <div class="learning__left">
       <div class="learning__header">
@@ -42,7 +42,7 @@
               </p>
             </div>
             <div class="card__bottom">
-              <button class="card__button job-card__button">VIEW</button>
+              <button class="btn-standard job-card__button">VIEW</button>
             </div>
           </div>
         </div>
@@ -102,7 +102,7 @@
               <div class="suggested-course-card__subtitle">Academy</div>
             </div>
             <div class="card__bottom suggested-course-card__bottom">
-              <div class="card__button">LEARN MORE</div>
+              <div class="btn-standard">LEARN MORE</div>
             </div>
           </div>
           <div class="suggested-course-card">
@@ -121,7 +121,7 @@
               <div class="suggested-course-card__subtitle">Academy</div>
             </div>
             <div class="card__bottom">
-              <div class="card__button">LEARN MORE</div>
+              <div class="btn-standard">LEARN MORE</div>
             </div>
           </div>
         </div>
@@ -174,12 +174,12 @@
 
 <script>
 import CourseList from "@/components/courses/CourseList";
-import Modal from "@/components/utils/Modal";
+import CourseForm from "@/components/courses/CourseForm";
 
 export default {
   components: {
     CourseList,
-    Modal
+    CourseForm
   },
   async fetch({ $axios, store }) {
     const data = await $axios.$get("https://type.fit/api/quotes");

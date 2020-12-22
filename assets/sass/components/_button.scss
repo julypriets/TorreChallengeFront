@@ -8,3 +8,18 @@
     margin-left: 0.6rem;
   }
 }
+
+.btn-standard {
+  color: $color-primary;
+  border: none;
+  background-color: transparent;
+  font-family: inherit;
+  font-size: $font-size-md;
+  cursor: pointer;
+  transition: all 0.3s;
+  padding: 0.6rem 1.5rem 0.8rem 1.5rem;
+
+  &:hover {
+    background-color: rgba($color-dark-gray, 0.8);
+  }
+}

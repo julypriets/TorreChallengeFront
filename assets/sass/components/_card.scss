@@ -1,19 +1,4 @@
 .card {
-  &__button {
-    color: $color-primary;
-    border: none;
-    background-color: transparent;
-    font-family: inherit;
-    font-size: $font-size-md;
-    cursor: pointer;
-    transition: all 0.3s;
-    padding: 0.6rem 1.5rem;
-
-    &:hover {
-      background-color: $color-dark-gray;
-    }
-  }
-
   &__bottom {
     display: flex;
     justify-content: flex-end;
