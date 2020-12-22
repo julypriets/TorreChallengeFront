@@ -1,89 +1,212 @@
 <template>
-  <v-row justify="center" align="center">
-    <v-col cols="12" sm="8" md="6">
-      <div class="text-center">
-        <logo />
-        <vuetify-logo />
+  <div class="content learning">
+    <div class="learning__left">
+      <div class="learning__header">
+        <h1 class="heading-primary">Learning</h1>
+        <p class="learning__quote">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
+          dolorum ducimus laborum error possimus?
+        </p>
       </div>
-      <v-card>
-        <v-card-title class="headline">
-          Welcome to the Vuetify + Nuxt.js template
-        </v-card-title>
-        <v-card-text>
-          <p>Vuetify is a progressive Material Design component framework for Vue.js. It was designed to empower developers to create amazing applications.</p>
-          <p>
-            For more information on Vuetify, check out the <a
-              href="https://vuetifyjs.com"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              documentation
-            </a>.
-          </p>
-          <p>
-            If you have questions, please join the official <a
-              href="https://chat.vuetifyjs.com/"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="chat"
-            >
-              discord
-            </a>.
-          </p>
-          <p>
-            Find a bug? Report it on the github <a
-              href="https://github.com/vuetifyjs/vuetify/issues"
-              target="_blank"
-              rel="noopener noreferrer"
-              title="contribute"
-            >
-              issue board
-            </a>.
-          </p>
-          <p>Thank you for developing with Vuetify and I look forward to bringing more exciting features in the future.</p>
-          <div class="text-xs-right">
-            <em><small>&mdash; John Leider</small></em>
+
+      <div class="learning__courses">
+        <div class="btn-add">
+          <h2 class="heading-secondary">Courses</h2>
+          <span class="material-icons btn-add__icon">
+            add_circle
+          </span>
+        </div>
+
+        <div class="learning__section">
+          <h3 class="heading-tertiary">Current</h3>
+          <!-- CourseList -->
+        </div>
+        <div class="learning__section">
+          <h3 class="heading-tertiary">Completed</h3>
+          <div class="learning__courses-cards">
+            <div class="course-card">
+              <div class="course-card__img"></div>
+              <div class="course-card__options">...</div>
+              <div class="course-card__content">
+                <p class="course-card__title">
+                  React the Complete Guide
+                </p>
+                <p class="course-card__subtitle">Udemy</p>
+                <p class="course-card__date">Started on Dic 20</p>
+              </div>
+              <div class="course-card__popover">
+                <div class="course-card__popover-item">Edit</div>
+                <div class="course-card__popover-item">Delete</div>
+              </div>
+            </div>
+            <div class="course-card">
+              <div class="course-card__img"></div>
+              <div class="course-card__options">...</div>
+              <div class="course-card__content">
+                <p class="course-card__title">
+                  React the Complete Guide
+                </p>
+                <p class="course-card__subtitle">Udemy</p>
+                <p class="course-card__date">Started on Dic 20</p>
+              </div>
+            </div>
           </div>
-          <hr class="my-3">
-          <a
-            href="https://nuxtjs.org/"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt Documentation
-          </a>
-          <br>
-          <a
-            href="https://github.com/nuxt/nuxt.js"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Nuxt GitHub
-          </a>
-        </v-card-text>
-        <v-card-actions>
-          <v-spacer />
-          <v-btn
-            color="primary"
-            nuxt
-            to="/inspire"
-          >
-            Continue
-          </v-btn>
-        </v-card-actions>
-      </v-card>
-    </v-col>
-  </v-row>
+          <div class="course-card__list-bottom">View full list</div>
+        </div>
+      </div>
+
+      <div class="learning__jobs">
+        <h2 class="heading-secondary">Jobs that match your skills</h2>
+        <div class="learning__jobs-cards">
+          <div class="job-card">
+            <div class="job-card__img"></div>
+            <div class="job-card__content">
+              <div class="job-card__title">Market Researcher</div>
+              <p class="job-card__item">Torre Labs</p>
+              <p class="job-card__item">Employee / Colleague</p>
+              <p class="job-card__item--icon">
+                <span class="material-icons"> public </span>Remote
+              </p>
+            </div>
+            <div class="card__bottom">
+              <button class="card__button job-card__button">VIEW</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="learning__right">
+      <div class="learning__card">
+        <div class="learning__card-img"></div>
+        <div class="learning__card-content">
+          <div class="learning__card-header-wrap">
+            <div class="learning__card-level-wrap">
+              <p class="learning__card-level">
+                Learning Level
+              </p>
+              <span class="material-icons">
+                info
+              </span>
+              <div class="learning__card-level-info">
+                Torre Learning has different levels according to the hours
+                you've spent in courses, certifications, among others. A high
+                level is very attractive to recruiters.
+              </div>
+            </div>
+            <p class="learning__card-next-level">
+              <span class="learning__card-next-level--primary"
+                >Next level:</span
+              >
+              Intermediate
+            </p>
+          </div>
+          <h2 class="heading-secondary">Beginner</h2>
+          <div class="learning__card-progress">
+            <div class="learning__card-progress-bar"></div>
+          </div>
+          <div class="learning__card-hours">10/100 hours left</div>
+        </div>
+      </div>
+      <div class="learning__suggested">
+        <h2 class="heading-secondary">Suggested for you</h2>
+        <p class="learning__suggested-subtitle">
+          Improve your desired skills with these courses
+        </p>
+        <div class="learning__suggested-cards">
+          <div class="suggested-course-card">
+            <img
+              src="https://cdn01.alison-static.net/courses/1640/alison_courseware_intro_1640.jpg"
+              class="suggested-course-card__img"
+            />
+            <img
+              class="suggested-course-card__img--sm"
+              src="https://www.udemy.com/staticx/udemy/images/v6/default-meta-image.png"
+            />
+            <div class="suggested-course-card__content">
+              <div class="suggested-course-card__title">
+                Swift: The Complete Guide
+              </div>
+              <div class="suggested-course-card__subtitle">Academy</div>
+            </div>
+            <div class="card__bottom suggested-course-card__bottom">
+              <div class="card__button">LEARN MORE</div>
+            </div>
+          </div>
+          <div class="suggested-course-card">
+            <img
+              src="https://cdn01.alison-static.net/courses/1640/alison_courseware_intro_1640.jpg"
+              class="suggested-course-card__img"
+            />
+            <img
+              class="suggested-course-card__img--sm"
+              src="https://www.udemy.com/staticx/udemy/images/v6/default-meta-image.png"
+            />
+            <div class="suggested-course-card__content">
+              <div class="suggested-course-card__title">
+                Swift: The Complete Guide
+              </div>
+              <div class="suggested-course-card__subtitle">Academy</div>
+            </div>
+            <div class="card__bottom">
+              <div class="card__button">LEARN MORE</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="learning__overview">
+        <h2 class="heading-secondary">Network Overview</h2>
+        <div class="learning__overview-subtitle">
+          See what your network's currently learning
+        </div>
+        <div class="learning__overview-cards">
+          <div class="overview-card">
+            <div class="overview-card__title">
+              Kubernetes: from zero to hero
+            </div>
+            <div class="overview-card__subtitle">
+              Carlos Mario Sarmiento Pinilla
+            </div>
+            <div class="overview-card__text">
+              FullStack developer at Carvajal
+            </div>
+          </div>
+          <div class="overview-card">
+            <div class="overview-card__title">
+              Kubernetes: from zero to hero
+            </div>
+            <div class="overview-card__subtitle">
+              Carlos Mario Sarmiento Pinilla
+            </div>
+            <div class="overview-card__text">
+              FullStack developer at Carvajal
+            </div>
+          </div>
+          <div class="overview-card">
+            <div class="overview-card__title">
+              Kubernetes: from zero to hero
+            </div>
+            <div class="overview-card__subtitle">
+              Carlos Mario Sarmiento Pinilla
+            </div>
+            <div class="overview-card__text">
+              FullStack developer at Carvajal
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
-import Logo from '~/components/Logo.vue'
-import VuetifyLogo from '~/components/VuetifyLogo.vue'
+import CourseList from "@/components/Courses/CourseList";
 
 export default {
   components: {
-    Logo,
-    VuetifyLogo
+    CourseList
   }
-}
+};
 </script>
+
+<style></style>

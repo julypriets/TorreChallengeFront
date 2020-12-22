@@ -1,0 +1,220 @@
+.card {
+  &__button {
+    color: $color-primary;
+    border: none;
+    background-color: transparent;
+    font-family: inherit;
+    font-size: $font-size-md;
+    cursor: pointer;
+    transition: all 0.3s;
+    padding: 0.6rem 1.5rem;
+
+    &:hover {
+      background-color: $color-dark-gray;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 0 1.5rem 0;
+  }
+}
+
+.course-card {
+  display: flex;
+  height: 8rem;
+  width: calc(50% - 3rem);
+  position: relative;
+  margin-right: 2rem;
+  margin-bottom: 1.5rem;
+
+  &__img {
+    object-fit: cover;
+    background-color: $color-gray;
+    height: 8rem;
+    width: 8rem;
+  }
+
+  &__content {
+    background-color: $color-dark;
+    padding: 0.6rem 3rem 0.5rem 1.5rem;
+    width: calc(100% - 8rem);
+  }
+
+  &__options {
+    color: $color-gray;
+    font-weight: 700;
+    position: absolute;
+    right: 1rem;
+    top: -0.2rem;
+    margin: 0;
+    cursor: pointer;
+  }
+
+  &__title {
+    font-size: $font-size-sm;
+    font-weight: 500;
+    color: $color-primary;
+    margin-bottom: 0.5rem;
+  }
+
+  &__subtitle {
+    font-size: $font-size-xs;
+    margin-bottom: 0.6rem;
+  }
+
+  &__date {
+    font-size: $font-size-xxs;
+  }
+
+  &__popover {
+    z-index: 2;
+    background-color: $color-dark;
+    box-shadow: $default-box-shadow;
+    position: absolute;
+    top: -0.2rem;
+    right: -3rem;
+
+    &-item {
+      padding: 0.6rem 2rem;
+      transition: all 0.3s;
+      font-size: $font-size-sm;
+      cursor: pointer;
+      &:hover {
+        background-color: rgba($color-light, 0.1);
+      }
+    }
+  }
+
+  &__list-bottom {
+    font-size: $font-size-sm;
+    color: $color-primary;
+    font-weight: 500;
+  }
+}
+
+.job-card {
+  background-color: $color-dark;
+  width: 32rem;
+  height: 31rem;
+
+  &__img {
+    height: 14rem;
+    width: 100%;
+    object-fit: cover;
+    background-color: $color-dark-gray;
+  }
+
+  &__title {
+    font-weight: 500;
+    color: $color-light;
+    margin-bottom: 1rem;
+  }
+
+  &__content {
+    padding: 1rem 2rem;
+  }
+
+  &__item {
+    font-size: $font-size-sm;
+    margin-bottom: 0.5rem;
+
+    &--icon {
+      @extend .job-card__item;
+      display: flex;
+      align-items: center;
+
+      & span {
+        font-size: $font-size-md;
+        margin-right: 0.4rem;
+      }
+    }
+  }
+
+  &__button {
+    margin-right: 3rem;
+  }
+}
+
+.suggested-course-card {
+  min-width: 25rem;
+  width: 25rem;
+  box-shadow: $default-box-shadow;
+  background-color: $color-dark;
+  position: relative;
+  margin-right: 2rem;
+
+  &__img {
+    height: 12rem;
+    width: 100%;
+    background-color: $color-dark-gray;
+    object-fit: cover;
+
+    &--sm {
+      height: 3.5rem;
+      width: 8rem;
+      background-color: white;
+      position: absolute;
+      right: 0;
+      top: 42%;
+      box-shadow: $default-box-shadow;
+    }
+  }
+
+  &__content {
+    padding: 1.8rem 1.8rem 2rem 1.8rem;
+  }
+
+  &__title {
+    color: $color-light;
+    font-size: $font-size-md;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  &__subtitle {
+    font-size: $font-size-xs;
+  }
+
+  &__bottom {
+    position: absolute;
+    bottom: 0;
+    right: 1rem;
+  }
+}
+
+.overview-card {
+  height: 20rem;
+  min-width: 25rem;
+  width: 25rem;
+  margin-right: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 1rem 2rem;
+  background-image: linear-gradient(
+      to top,
+      rgba($color-dark, 1) 20%,
+      rgba($color-dark, 0.5) 60%,
+      transparent
+    ),
+    url("https://www.linuxadictos.com/wp-content/uploads/kubernetes-logo.jpg");
+  background-size: cover;
+  background-position: center center;
+
+  &__title {
+    font-size: $font-size-sm;
+    color: $color-light;
+  }
+
+  &__subtitle {
+    font-size: $font-size-xs;
+    color: $color-light;
+  }
+
+  &__text {
+    font-size: $font-size-xxs;
+    color: $color-primary;
+  }
+}

@@ -1,0 +1,41 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap");
+
+$font-size-lg: 1.8rem;
+$font-size-default: 1.6rem;
+$font-size-md: 1.5rem;
+$font-size-sm: 1.4rem;
+$font-size-xs: 1.3rem;
+$font-size-xxs: 1.2rem;
+
+$font-size-heading-primary: 4rem;
+$font-size-heading-secondary: 2.4rem;
+$font-size-heading-tertiary: 2rem;
+
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: $font-size-default;
+  color: $color-gray;
+}
+
+// HEADINGS
+.heading-primary {
+  font-size: $font-size-heading-primary;
+  color: $color-light;
+  margin-bottom: 2rem;
+}
+
+.heading-secondary {
+  color: $color-light;
+  font-size: $font-size-heading-secondary;
+  font-weight: 500;
+}
+
+.heading-tertiary {
+  color: $color-light;
+  font-size: $font-size-heading-tertiary;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.heading-quaternary {
+}

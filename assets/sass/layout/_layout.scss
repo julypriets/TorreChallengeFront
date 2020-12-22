@@ -1,0 +1,12 @@
+.container {
+  height: 100%;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.content {
+  background-color: $color-darker;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
