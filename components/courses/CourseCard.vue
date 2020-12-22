@@ -11,8 +11,8 @@
       </p>
       <p class="course-card__subtitle">{{ issuedBy }}</p>
       <div class="course-card__date">
-        <p>Started on {{ startDate }}</p>
-        <p v-if="endDate">&nbsp; - &nbsp; Finished on {{ endDate }}</p>
+        <p>{{ endDate ? "" : "Started on" }}{{ startDate }}</p>
+        <p v-if="endDate">&nbsp; to {{ endDate }}</p>
       </div>
     </div>
     <div class="course-card__popover">

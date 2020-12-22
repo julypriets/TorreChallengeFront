@@ -1,20 +1,39 @@
 <template>
   <div class="learning__courses-cards">
-    <CourseCard
-      v-for="course in courses"
-      :key="course.id"
-      :id="course.id"
-      :name="course.name"
-      :thumbnail="course.thumbnail"
-      :startDate="course.startDate"
-      :endDate="course.endDate"
-      :issuedBy="course.issuedBy"
-      :skills="course.skills"
-      :sectors="course.sectors"
-      :certificateURL="course.certificateURL"
-      :certificateID="course.certificateID"
-      :certificateExpirationDate="course.certificateExpirationDate"
-    />
+    <div class="learning__courses-cards" v-if="current">
+      <CourseCard
+        v-for="course in currentCourses"
+        :key="course.id"
+        :id="course.id"
+        :name="course.name"
+        :thumbnail="course.thumbnail"
+        :startDate="course.startDate"
+        :endDate="course.endDate"
+        :issuedBy="course.issuedBy"
+        :skills="course.skills"
+        :sectors="course.sectors"
+        :certificateURL="course.certificateURL"
+        :certificateID="course.certificateID"
+        :certificateExpirationDate="course.certificateExpirationDate"
+      />
+    </div>
+    <div class="learning__courses-cards" v-if="!current">
+      <CourseCard
+        v-for="course in completedCourses"
+        :key="course.id"
+        :id="course.id"
+        :name="course.name"
+        :thumbnail="course.thumbnail"
+        :startDate="course.startDate"
+        :endDate="course.endDate"
+        :issuedBy="course.issuedBy"
+        :skills="course.skills"
+        :sectors="course.sectors"
+        :certificateURL="course.certificateURL"
+        :certificateID="course.certificateID"
+        :certificateExpirationDate="course.certificateExpirationDate"
+      />
+    </div>
   </div>
 </template>
 
@@ -38,7 +57,8 @@ export default {
   },
   computed: {
     ...mapGetters({
-      courses
+      currentCourses: "courses/currentCourses",
+      completedCourses: "courses/completedCourses"
     })
   }
 };

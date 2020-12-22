@@ -12,7 +12,7 @@ export default () => ({
       sectors: ["Economy", "Health", "Systems"]
     },
     {
-      id: "1234567890",
+      id: "12345637890",
       name: "Landscapes and Systems",
       thumbnail:
         "https://llandscapes-10674.kxcdn.com/wp-content/uploads/2019/07/lighting.jpg",
@@ -25,7 +25,7 @@ export default () => ({
   ],
   completedCourses: [
     {
-      id: "1234567890",
+      id: "16234567890",
       name: "Finished and Systems",
       thumbnail:
         "https://llandscapes-10674.kxcdn.com/wp-content/uploads/2019/07/lighting.jpg",
@@ -40,7 +40,7 @@ export default () => ({
       certificateExpirationDate: "Dec 12 2020"
     },
     {
-      id: "1234567890",
+      id: "12345687890",
       name: "Finished 2 and Systems",
       thumbnail:
         "https://llandscapes-10674.kxcdn.com/wp-content/uploads/2019/07/lighting.jpg",

@@ -11,6 +11,11 @@
   &__quote {
     color: $color-gray;
     max-width: 80%;
+
+    &-author {
+      font-size: $font-size-sm;
+      margin-top: 1rem;
+    }
   }
 
   &__courses {

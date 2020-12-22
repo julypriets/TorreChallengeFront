@@ -3,10 +3,8 @@
     <div class="learning__left">
       <div class="learning__header">
         <h1 class="heading-primary">Learning</h1>
-        <p class="learning__quote">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Delectus
-          dolorum ducimus laborum error possimus?
-        </p>
+        <p class="learning__quote">"{{ quote.text }}"</p>
+        <p class="learning__quote-author">— &nbsp;{{ quote.author }}</p>
       </div>
 
       <div class="learning__courses">
@@ -19,38 +17,11 @@
 
         <div class="learning__section">
           <h3 class="heading-tertiary">Current</h3>
-          <!-- CourseList -->
+          <CourseList :current="true" />
         </div>
         <div class="learning__section">
           <h3 class="heading-tertiary">Completed</h3>
-          <div class="learning__courses-cards">
-            <div class="course-card">
-              <div class="course-card__img"></div>
-              <div class="course-card__options">...</div>
-              <div class="course-card__content">
-                <p class="course-card__title">
-                  React the Complete Guide
-                </p>
-                <p class="course-card__subtitle">Udemy</p>
-                <p class="course-card__date">Started on Dic 20</p>
-              </div>
-              <div class="course-card__popover">
-                <div class="course-card__popover-item">Edit</div>
-                <div class="course-card__popover-item">Delete</div>
-              </div>
-            </div>
-            <div class="course-card">
-              <div class="course-card__img"></div>
-              <div class="course-card__options">...</div>
-              <div class="course-card__content">
-                <p class="course-card__title">
-                  React the Complete Guide
-                </p>
-                <p class="course-card__subtitle">Udemy</p>
-                <p class="course-card__date">Started on Dic 20</p>
-              </div>
-            </div>
-          </div>
+          <CourseList :current="false" />
           <div class="course-card__list-bottom">View full list</div>
         </div>
       </div>
@@ -200,11 +171,29 @@
 </template>
 
 <script>
-import CourseList from "@/components/Courses/CourseList";
+import CourseList from "@/components/courses/CourseList";
 
 export default {
   components: {
     CourseList
+  },
+  async fetch({ $axios, store }) {
+    const data = await $axios.$get("https://type.fit/api/quotes");
+    console.log("This is the quote: ", data);
+    try {
+      await store.dispatch("quotes/storeQuotes", data);
+    } catch (err) {
+      console.error(err);
+    }
+  },
+  computed: {
+    quote() {
+      console.log(
+        "This is que quote: ",
+        this.$store.getters["quotes/getQuote"]
+      );
+      return this.$store.getters["quotes/getQuote"];
+    }
   }
 };
 </script>

@@ -1,7 +1,7 @@
 export default {
   state() {
     return {
-      url: process.env.MODE !== production ? "prodURL" : "localhostURL"
+      url: process.env.NODE_ENV !== "production" ? "prodURL" : "localhostURL"
     };
   },
 
