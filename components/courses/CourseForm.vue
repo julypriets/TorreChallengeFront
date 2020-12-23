@@ -258,7 +258,6 @@ export default {
       this.imageFile = this.$refs.imageSelector.files[0];
     },
     clickFileInput() {
-      console.log("Clicking...");
       this.$refs.imageSelector.click();
     }
   },

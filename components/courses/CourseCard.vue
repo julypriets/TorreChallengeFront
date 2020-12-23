@@ -61,20 +61,16 @@ export default {
   computed: {
     parsedStartDate() {
       const d = new Date(this.$props.startDate);
-      console.log("This is d: ", d);
       const ye = new Intl.DateTimeFormat("en", { year: "numeric" }).format(d);
       const mo = new Intl.DateTimeFormat("en", { month: "short" }).format(d);
       const da = new Intl.DateTimeFormat("en", { day: "2-digit" }).format(d);
-      console.log(`${mo}/${da}/${ye}`);
       return `${mo} ${da} ${ye}`;
     },
     parsedEndDate() {
       const d = new Date(this.$props.endDate);
-      console.log("This is d: ", d);
       const ye = new Intl.DateTimeFormat("en", { year: "numeric" }).format(d);
       const mo = new Intl.DateTimeFormat("en", { month: "short" }).format(d);
       const da = new Intl.DateTimeFormat("en", { day: "2-digit" }).format(d);
-      console.log(`${mo}/${da}/${ye}`);
       return `${mo} ${da} ${ye}`;
     }
   }

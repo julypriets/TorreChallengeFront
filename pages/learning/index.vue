@@ -219,7 +219,6 @@ export default {
       this.showModal = !this.showModal;
     },
     async createCourse(course) {
-      console.log("COURSE: ", course);
       const formData = new FormData();
       for (const [key, value] of Object.entries(course)) {
         formData.append(key, value);
@@ -235,7 +234,7 @@ export default {
   },
   computed: {
     quote() {
-      console.log("STOREEEEE ", this.$store.getters["courses/currentCourses"]);
+      "STOREEEEE ", this.$store.getters["courses/currentCourses"];
       return this.$store.getters["quotes/getQuote"];
     },
     ...mapGetters({
