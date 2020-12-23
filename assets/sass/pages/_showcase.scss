@@ -1,0 +1,58 @@
+.showcase {
+  padding: 4rem;
+  margin-top: 3rem;
+
+  &__container {
+    display: flex;
+    margin-top: 5rem;
+  }
+
+  &__left {
+    width: 30%;
+    margin-top: 2rem;
+    overflow-y: auto;
+    max-height: 100%;
+  }
+
+  &__right {
+    background-color: $color-dark;
+    width: 70%;
+    padding: 2.5rem 4rem;
+
+    &-title {
+      color: $color-light;
+      font-size: 2.8rem;
+    }
+
+    &-date {
+      font-size: $font-size-xs;
+    }
+
+    &-description {
+      margin-top: 2rem;
+    }
+
+    &-pictures {
+      margin-top: 2rem;
+      display: flex;
+    }
+
+    &-big-pic {
+      height: 30rem;
+      width: 50rem;
+      background-color: $color-dark-gray;
+    }
+
+    &-pic {
+      height: 6.8rem;
+      width: 15rem;
+      margin-left: 2rem;
+      margin-bottom: 1rem;
+      background-color: $color-dark-gray;
+    }
+  }
+
+  &__projects {
+    margin-top: 2rem;
+  }
+}

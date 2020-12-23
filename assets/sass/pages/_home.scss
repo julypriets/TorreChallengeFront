@@ -44,8 +44,13 @@
 
     &-video {
       background-color: $color-dark;
+      min-height: 30rem;
+      min-width: 54.5rem;
+      margin-right: 3rem;
+      margin-top: 2rem;
       position: absolute;
       left: 0;
+      padding: 2rem 3rem;
     }
 
     &-deco {

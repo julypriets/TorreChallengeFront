@@ -208,3 +208,37 @@
     color: $color-primary;
   }
 }
+
+.showcase-card {
+  background-color: $color-dark;
+  width: 90%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0.8rem 2rem 1rem 2rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  transition: all 0.3s;
+  height: 6rem;
+
+  &:hover {
+    background-color: $color-dark-gray;
+  }
+
+  &--selected {
+    @extend .showcase-card;
+    background-color: $color-dark-gray;
+  }
+
+  &__title {
+    color: $color-light;
+    font-weight: 500;
+  }
+
+  &__date {
+    font-size: $font-size-xs;
+  }
+
+  &__icon {
+    color: $color-primary;
+  }
+}

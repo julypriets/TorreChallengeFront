@@ -1,25 +1,26 @@
 <template>
   <div class="container">
     <div class="navigation">
-      <div class="navigation__wrap">
+      <NuxtLink to="/" class="navigation__wrap">
         <span class="material-icons navigation__menu">
           menu
         </span>
         <div class="navigation__logo">torre</div>
-      </div>
+      </NuxtLink>
       <div class="navigation__wrap">
-        <div class="navigation__link">
+        <NuxtLink to="learning" class="navigation__link">
           <span class="material-icons navigation__link-icon">
             psychology
           </span>
           <p class="navigation__link-text">Learning</p>
-        </div>
-        <div class="navigation__link">
+        </NuxtLink>
+
+        <NuxtLink to="/showcase" class="navigation__link">
           <span class="material-icons navigation__link-icon">
             stars
           </span>
           <p class="navigation__link-text">Showcase</p>
-        </div>
+        </NuxtLink>
         <div class="navigation__link" @click="logout">
           <span class="material-icons navigation__link-icon">
             exit_to_app

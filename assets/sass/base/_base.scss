@@ -40,3 +40,18 @@ body {
   border-radius: 10px;
   background-color: $color-dark-gray;
 }
+
+.nuxt-link-active,
+.nuxt-link-exact-active {
+  color: $color-light;
+  text-decoration: none;
+}
+
+.nuxt-link-prefetched {
+  color: $color-gray;
+}
+
+a {
+  color: $color-gray;
+  text-decoration: none;
+}

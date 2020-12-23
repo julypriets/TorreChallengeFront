@@ -42,15 +42,7 @@
       <div class="home__show">
         <div class="home__show-deco"></div>
         <div class="home__show-video">
-          <iframe
-            width="545"
-            height="300"
-            style="position: absolute; left: 0"
-            src="https://www.youtube.com/embed/o7gJ9jLMmIE"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
+          <h2 class="heading-secondary">Introducing Torre Learning</h2>
         </div>
       </div>
     </div>
@@ -59,15 +51,7 @@
       <div class="home__show">
         <div class="home__show-deco--2"></div>
         <div class="home__show-video">
-          <iframe
-            width="545"
-            height="300"
-            style="position: absolute; left: 0"
-            src="https://www.youtube.com/embed/o7gJ9jLMmIE"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
+          <h2 class="heading-secondary">Introducing Torre Showcase</h2>
         </div>
       </div>
 
