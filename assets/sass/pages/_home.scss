@@ -1,0 +1,86 @@
+.home {
+  padding-left: 12rem;
+  padding-right: 12rem;
+
+  &__wrap {
+    margin-top: 5rem;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 10rem;
+  }
+
+  &__login {
+    &-input {
+      max-width: 32rem;
+      padding-top: 0.8rem;
+      padding-bottom: 0.8rem;
+    }
+
+    &-btn-wrap {
+      width: 32rem;
+      display: flex;
+      margin-top: 0.8rem;
+      justify-content: flex-end;
+
+      & button {
+        font-weight: 500;
+      }
+    }
+  }
+
+  &__show {
+    position: relative;
+    min-height: 30rem;
+    min-width: 54.5rem;
+    margin-right: 3rem;
+    margin-top: 2rem;
+
+    &-video {
+      background-color: $color-dark;
+      position: absolute;
+      left: 0;
+    }
+
+    &-deco {
+      height: 20rem;
+      width: 20rem;
+      background-color: $color-primary;
+      position: absolute;
+      top: -1.5rem;
+      right: -1.5rem;
+
+      &--2 {
+        @extend .home__show-deco;
+        left: -1.5rem;
+        bottom: -1.5rem;
+        top: auto;
+      }
+    }
+  }
+
+  &__features {
+    max-width: 30%;
+    margin-right: 6rem;
+    margin-top: 2rem;
+  }
+
+  &__features-list {
+    margin-top: 2rem;
+  }
+
+  &__feature {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+
+    &-icon {
+      font-size: 4rem;
+      margin-right: 2rem;
+    }
+
+    &-text {
+      display: block;
+      font-size: $font-size-md;
+    }
+  }
+}

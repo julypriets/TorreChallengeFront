@@ -106,4 +106,31 @@
       color: $color-light;
     }
   }
+
+  &__file-input {
+    display: none;
+  }
+
+  &__file-upload {
+    @extend .form__input;
+    width: 100%;
+    display: flex;
+    align-items: center;
+
+    &-btn {
+      background-color: $color-dark;
+      color: $color-primary;
+      border: none;
+      padding: 0.6rem 2rem;
+      cursor: pointer;
+      transition: all 0.3s;
+
+      &:hover {
+        background-color: rgba($color-dark, 0.7);
+      }
+    }
+    &-name {
+      margin-left: 2rem;
+    }
+  }
 }

@@ -154,12 +154,21 @@
 
           <input
             type="file"
-            name=""
+            class="form__file-input"
             id=""
             @change="selectImage"
             ref="imageSelector"
             accept="image/*"
           />
+
+          <div class="form__file-upload">
+            <button class="form__file-upload-btn" @click="clickFileInput">
+              UPLOAD IMAGE
+            </button>
+            <p v-if="imageFile" class="form__file-upload-name">
+              {{ imageFile.name }}
+            </p>
+          </div>
 
           <div
             class="form__warning"
@@ -169,7 +178,9 @@
             "
           >
             <div class="form__warning-icon">!</div>
-            <div class="form__warning-text">This is not a valid image</div>
+            <div class="form__warning-text">
+              The uploaded file is not a valid image
+            </div>
           </div>
         </div>
       </div>
@@ -245,6 +256,10 @@ export default {
     },
     selectImage() {
       this.imageFile = this.$refs.imageSelector.files[0];
+    },
+    clickFileInput() {
+      console.log("Clicking...");
+      this.$refs.imageSelector.click();
     }
   },
   computed: {

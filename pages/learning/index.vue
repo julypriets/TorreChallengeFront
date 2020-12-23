@@ -10,7 +10,9 @@
       <div class="learning__header">
         <h1 class="heading-primary">Learning</h1>
         <p class="learning__quote">"{{ quote.text }}"</p>
-        <p class="learning__quote-author">— &nbsp;{{ quote.author }}</p>
+        <p v-if="quote.author" class="learning__quote-author">
+          — &nbsp;{{ quote.author }}
+        </p>
       </div>
 
       <div class="learning__courses">
