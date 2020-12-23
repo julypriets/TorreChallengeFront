@@ -8,17 +8,19 @@
 
 .course-card {
   display: flex;
-  height: 11rem;
+  height: 10.5rem;
   width: calc(50% - 3rem);
+  min-width: calc(50% - 3rem);
   position: relative;
   margin-right: 2rem;
   margin-bottom: 1.5rem;
 
   &__img {
-    object-fit: cover;
-    background-color: $color-gray;
-    height: 11rem;
-    width: 11rem;
+    background-size: cover;
+    background-color: $color-dark;
+    height: 10.5rem;
+    width: 12rem;
+    background-position: center;
   }
 
   &__content {

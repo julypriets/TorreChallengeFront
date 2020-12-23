@@ -21,14 +21,20 @@
           </span>
         </div>
 
-        <div class="learning__section">
+        <div class="learning__section" v-if="currentCourses.length > 0">
           <h3 class="heading-tertiary">Current</h3>
-          <CourseList :current="true" />
+          <CourseList :current="true" :currentCourses="currentCourses" />
         </div>
-        <div class="learning__section">
+        <div class="learning__section" v-if="completedCourses.length > 0">
           <h3 class="heading-tertiary">Completed</h3>
-          <CourseList :current="false" />
+          <CourseList :current="false" :completedCourses="completedCourses" />
           <div class="course-card__list-bottom">View full list</div>
+        </div>
+        <div
+          class="learning__section"
+          v-if="currentCourses.length === 0 && completedCourses.length === 0"
+        >
+          Looks like you haven't registered any course. ¡Let's get started!
         </div>
       </div>
 
@@ -179,6 +185,7 @@
 <script>
 import CourseList from "@/components/courses/CourseList";
 import CourseForm from "@/components/courses/CourseForm";
+import { mapGetters } from "vuex";
 
 export default {
   components: {
@@ -188,8 +195,11 @@ export default {
   async fetch({ $axios, store }) {
     const data = await $axios.$get("https://type.fit/api/quotes");
     console.log("This is the quote: ", data);
+    const courses = await $axios.$get("/courses/getCourses");
+    console.log("These are the courses: ", courses.result);
     try {
       await store.dispatch("quotes/storeQuotes", data);
+      await store.dispatch("courses/setCourses", courses.result);
     } catch (err) {
       console.error(err);
     }
@@ -204,19 +214,29 @@ export default {
       this.showModal = !this.showModal;
     },
     async createCourse(course) {
-      const data = await this.$axios.$post("courses/createCourse", course);
+      console.log("COURSE: ", course);
+      const formData = new FormData();
+      for (const [key, value] of Object.entries(course)) {
+        formData.append(key, value);
+      }
+
+      const data = await this.$axios.$post("courses/createCourse", formData, {
+        headers: { "Content-Type": "multipart/form-data" }
+      });
+
       this.$store.dispatch("courses/addCourse", data.result);
       this.showModal = false;
     }
   },
   computed: {
     quote() {
-      console.log(
-        "This is que quote: ",
-        this.$store.getters["quotes/getQuote"]
-      );
+      console.log("STOREEEEE ", this.$store.getters["courses/currentCourses"]);
       return this.$store.getters["quotes/getQuote"];
-    }
+    },
+    ...mapGetters({
+      currentCourses: "courses/currentCourses",
+      completedCourses: "courses/completedCourses"
+    })
   }
 };
 </script>

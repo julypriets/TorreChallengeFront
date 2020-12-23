@@ -3,9 +3,13 @@ export default {
     return state.courses;
   },
   currentCourses(state) {
-    return state.courses.filter(course => course.current === true);
+    return state.courses
+      ? state.courses.filter(course => course.current === true)
+      : [];
   },
   completedCourses(state) {
-    return state.courses.filter(course => course.current === false);
+    return state.courses
+      ? state.courses.filter(course => course.current === false)
+      : [];
   }
 };

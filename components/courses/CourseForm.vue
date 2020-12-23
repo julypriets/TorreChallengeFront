@@ -151,6 +151,26 @@
               placeholder="Certificate URL"
             />
           </div>
+
+          <input
+            type="file"
+            name=""
+            id=""
+            @change="selectImage"
+            ref="imageSelector"
+            accept="image/*"
+          />
+
+          <div
+            class="form__warning"
+            v-if="
+              this.imageFile &&
+                !this.imageFile.name.match(/.(jpg|jpeg|png|gif)$/i)
+            "
+          >
+            <div class="form__warning-icon">!</div>
+            <div class="form__warning-text">This is not a valid image</div>
+          </div>
         </div>
       </div>
 
@@ -181,14 +201,12 @@ export default {
       endDate: "",
       issuedBy: "",
       skillString: "",
-      //   skills: [],
       sectorString: "",
-      //   sectors: [],
       totalHours: 0,
       certificateID: "",
       certificateExpirationDate: "",
       certificateURL: "",
-      certificateImage: {}
+      imageFile: null
     };
   },
   methods: {
@@ -202,7 +220,8 @@ export default {
               issuedBy: this.issuedBy,
               skills: this.skills,
               sectors: this.sectors,
-              totalHours: this.totalHours
+              totalHours: this.totalHours,
+              imageFile: this.imageFile
             }
           : {
               name: this.name,
@@ -215,13 +234,17 @@ export default {
               totalHours: this.totalHours,
               certificateID: this.certificateID,
               certificateExpirationDate: this.certificateExpirationDate,
-              certificateURL: this.certificateURL
+              certificateURL: this.certificateURL,
+              imageFile: this.imageFile
             };
 
         this.$emit("createCourse", body);
       } catch (err) {
         console.error(err);
       }
+    },
+    selectImage() {
+      this.imageFile = this.$refs.imageSelector.files[0];
     }
   },
   computed: {
@@ -238,7 +261,8 @@ export default {
           this.issuedBy !== "" &&
           this.skills.length > 0 &&
           this.sectors.length > 0 &&
-          this.totalHours > 0
+          this.totalHours > 0 &&
+          this.imageFile.name.match(/.(jpg|jpeg|png|gif)$/i)
         ) {
           return true;
         } else {
@@ -251,7 +275,8 @@ export default {
           this.skills.length > 0 &&
           this.sectors.length > 0 &&
           this.totalHours > 0 &&
-          this.endDate >= this.startDate
+          this.endDate >= this.startDate &&
+          this.imageFile.name.match(/.(jpg|jpeg|png|gif)$/i)
         ) {
           return true;
         } else {

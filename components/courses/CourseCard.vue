@@ -2,7 +2,9 @@
   <div class="course-card">
     <div
       class="course-card__img"
-      :style="{ backgroundImage: 'url(' + thumbnail + ')' }"
+      :style="{
+        backgroundImage: 'url(' + thumbnail + ')'
+      }"
     ></div>
     <div class="course-card__options" @click="showPopover = !showPopover">
       ...
@@ -13,8 +15,8 @@
       </p>
       <p class="course-card__subtitle">{{ issuedBy }}</p>
       <div class="course-card__date">
-        <p>{{ endDate ? "" : "Started on" }}{{ startDate }}</p>
-        <p v-if="endDate">&nbsp; to {{ endDate }}</p>
+        <p>{{ endDate ? "" : "Started on " }}{{ parsedStartDate }}</p>
+        <p v-if="endDate">&nbsp; to {{ parsedEndDate }}</p>
       </div>
     </div>
     <transition name="fade">
@@ -55,6 +57,26 @@ export default {
     return {
       showPopover: false
     };
+  },
+  computed: {
+    parsedStartDate() {
+      const d = new Date(this.$props.startDate);
+      console.log("This is d: ", d);
+      const ye = new Intl.DateTimeFormat("en", { year: "numeric" }).format(d);
+      const mo = new Intl.DateTimeFormat("en", { month: "short" }).format(d);
+      const da = new Intl.DateTimeFormat("en", { day: "2-digit" }).format(d);
+      console.log(`${mo}/${da}/${ye}`);
+      return `${mo} ${da} ${ye}`;
+    },
+    parsedEndDate() {
+      const d = new Date(this.$props.endDate);
+      console.log("This is d: ", d);
+      const ye = new Intl.DateTimeFormat("en", { year: "numeric" }).format(d);
+      const mo = new Intl.DateTimeFormat("en", { month: "short" }).format(d);
+      const da = new Intl.DateTimeFormat("en", { day: "2-digit" }).format(d);
+      console.log(`${mo}/${da}/${ye}`);
+      return `${mo} ${da} ${ye}`;
+    }
   }
 };
 </script>
