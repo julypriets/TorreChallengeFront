@@ -2,22 +2,38 @@
   <div class="content home">
     <div class="home__wrap">
       <div class="home__header">
-        <h1 class="heading-primary">Welcome!</h1>
-        <p class="header__text">We've got new features! Get to know them.</p>
+        <h1 class="heading-primary">
+          {{ isLoggedIn ? "Hi " + name : "Welcome!" }}
+        </h1>
+        <p class="home__header-text">
+          {{
+            isLoggedIn
+              ? "Hope you liked your tour, please let us know if you'd like to suggest any feature"
+              : "We've got new features! Get to know them."
+          }}
+        </p>
         <div class="home__login">
           <input
             type="text"
             class="form__input home__login-input"
             v-model="username"
             placeholder="Torre username"
+            v-if="!this.isLoggedIn"
           />
-          <div class="home__login-btn-wrap">
-            <button
-              @click="login"
-              v-on:keyup.enter="login"
-              class="btn-standard--inverted"
-            >
+          <div class="form__warning" v-if="showWarning && !this.isLoggedIn">
+            <div class="form__warning-icon">!</div>
+            <div class="form__warning-text">
+              Username not found. Try again.
+            </div>
+          </div>
+          <div class="home__login-btn-wrap" v-if="!isLoggedIn">
+            <button @click="login" class="btn-standard--inverted">
               EXPLORE
+            </button>
+          </div>
+          <div class="home__login-btn-wrap" v-if="isLoggedIn">
+            <button @click="logout" class="btn-standard--inverted">
+              LOGOUT
             </button>
           </div>
         </div>
@@ -94,16 +110,56 @@ export default {
   layout: "login",
   data() {
     return {
-      username: ""
+      username: "",
+      showWarning: false,
+      name: ""
     };
   },
   methods: {
     async login() {
-      const user = await this.$axios.$post("/torre/verifyUsername", {
-        username: this.username
-      });
-      console.log(user);
-      // this.$router.push("/learning");
+      try {
+        this.showWarning = false;
+        const user = await this.$axios.$get(
+          `/torre/verify-username?username=${this.username}`
+        );
+        if (user) {
+          await this.$store.dispatch("auth/setAuthenticated", true);
+          await this.$cookies.set(
+            "user",
+            {
+              picture: user.person.picture,
+              pictureThumbnail: user.person.pictureThumbnail,
+              name: user.person.name,
+              username: user.person.publicId
+            },
+            { sameSite: true }
+          );
+          this.$router.push("/learning");
+        }
+        if (!user.person) {
+          this.showWarning = true;
+        }
+      } catch (err) {
+        this.showWarning = true;
+      }
+    },
+    logout() {
+      this.$cookies.remove("user");
+      window.location.reload(true);
+      this.name = "";
+      this.username = "";
+      this.$store.dispatch("auth/setAuthenticated", false);
+    }
+  },
+  computed: {
+    isLoggedIn() {
+      const user = this.$cookies.get("user");
+      if (user) {
+        this.name = user.name.split(" ")[0];
+        return true;
+      } else {
+        return false;
+      }
     }
   }
 };

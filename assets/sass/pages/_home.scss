@@ -9,6 +9,13 @@
     margin-bottom: 10rem;
   }
 
+  &__header {
+    &-text {
+      max-width: 80%;
+      margin-bottom: 2rem;
+    }
+  }
+
   &__login {
     &-input {
       max-width: 32rem;

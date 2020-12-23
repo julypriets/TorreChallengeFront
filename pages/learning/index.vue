@@ -62,7 +62,10 @@
     </div>
     <div class="learning__right">
       <div class="learning__card">
-        <div class="learning__card-img"></div>
+        <div
+          class="learning__card-img"
+          :style="{ backgroundImage: 'url(' + thumbnail + ')' }"
+        ></div>
         <div class="learning__card-content">
           <div class="learning__card-header-wrap">
             <div class="learning__card-level-wrap">
@@ -194,6 +197,7 @@ export default {
     CourseList,
     CourseForm
   },
+  middleware: "authenticated",
   async fetch({ $axios, store }) {
     const data = await $axios.$get("/quotes/getQuote");
     const courses = await $axios.$get("/courses/getCourses");
@@ -237,7 +241,15 @@ export default {
     ...mapGetters({
       currentCourses: "courses/currentCourses",
       completedCourses: "courses/completedCourses"
-    })
+    }),
+    thumbnail() {
+      const user = this.$cookies.get("user");
+      if (user) {
+        return user.pictureThumbnail;
+      } else {
+        return "";
+      }
+    }
   }
 };
 </script>
