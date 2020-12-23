@@ -1,5 +1,5 @@
 export default {
-  storeQuotes({ commit }, quotes) {
-    commit("storeQuotes", quotes);
+  storeQuote({ commit }, quote) {
+    commit("storeQuote", quote);
   }
 };

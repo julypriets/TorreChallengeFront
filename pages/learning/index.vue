@@ -195,12 +195,11 @@ export default {
     CourseForm
   },
   async fetch({ $axios, store }) {
-    const data = await $axios.$get("https://type.fit/api/quotes");
-    console.log("This is the quote: ", data);
+    const data = await $axios.$get("/quotes/getQuote");
     const courses = await $axios.$get("/courses/getCourses");
-    console.log("These are the courses: ", courses.result);
+
     try {
-      await store.dispatch("quotes/storeQuotes", data);
+      await store.dispatch("quotes/storeQuote", data.result);
       await store.dispatch("courses/setCourses", courses.result);
     } catch (err) {
       console.error(err);

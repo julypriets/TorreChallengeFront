@@ -12,7 +12,11 @@
             placeholder="Torre username"
           />
           <div class="home__login-btn-wrap">
-            <button @click="login" class="btn-standard--inverted">
+            <button
+              @click="login"
+              v-on:keyup.enter="login"
+              class="btn-standard--inverted"
+            >
               EXPLORE
             </button>
           </div>
@@ -95,8 +99,11 @@ export default {
   },
   methods: {
     async login() {
-      // await $axios.post()
-      this.$router.push("/learning");
+      const user = await this.$axios.$post("/torre/verifyUsername", {
+        username: this.username
+      });
+      console.log(user);
+      // this.$router.push("/learning");
     }
   }
 };
